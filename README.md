@@ -1,2 +1,2 @@
 # Django-App
-Learning Django
+Learning Django by making a Polls App
