@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Add Question</h2>
+
+<form action="{% url 'firstapp:addq' %}" method="post">
+	{% csrf_token %}	
+	Write Here:<br><br>
+	<input name="new_question" type="text" name="Question" value="">
+ 	<br>
+ 	<br>
+	<input type="submit" value="Submit">
+</form> 
+</body>
+</html>
