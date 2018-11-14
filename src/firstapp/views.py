@@ -20,7 +20,7 @@ def index(request):
 def addq(request):
 	if request.method == 'POST':
 		newq=request.POST.get('new_question')
-		q = Question(question_text="newq",pub_date=timezone.now)
+		q = Question(question_text="newq",pub_date=timezone.now())
 		q.save()
 
 		return render(request,'firstapp/addq.html')
