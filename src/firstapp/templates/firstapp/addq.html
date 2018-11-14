@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<head><style type="text/css"></style></head>
 <body>
 
 <h2>Add Question</h2>
@@ -7,7 +8,7 @@
 <form action="{% url 'firstapp:addq' %}" method="post">
 	{% csrf_token %}	
 	Write Here:<br><br>
-	<input name="new_question" type="text" name="Question" value="">
+	<input name="new_question" type="text" value="">
  	<br>
  	<br>
 	<input type="submit" value="Submit">
