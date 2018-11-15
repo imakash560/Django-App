@@ -1,9 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head><style type="text/css"></style></head>
-<body>
-
-<h2>Results</h2>
-
-</body>
-</html>
+<h1>{{ question.question_text }}</h1>
+<ul>
+{% for choice in question.choice_set.all %}
+<li>{{ choice.choice_text }} -- {{ choice.votes }} vote</li>
+{% endfor %}
+</ul>
+<a href="{% url 'firstapp:detail' question.id %}">Vote again?</a>
