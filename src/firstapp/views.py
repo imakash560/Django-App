@@ -2,6 +2,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.shortcuts import get_object_or_404,render
 from django.urls import reverse
+from django.views import generic
 
 from .models import Choice, Question
 
@@ -10,13 +11,13 @@ from django.utils import timezone
 
 # Create your views here.
 
-def index(request):
-	latest_question_list=Question.objects.order_by('-pub_date')
-	#template=loader.get_template('firstapp/index.html')
-	context={
-		'latest_question_list': latest_question_list,
-	}
-	return render(request,'firstapp/index.html',context)
+class IndexView(generic.ListView):
+	template_name='firstapp/index.html'
+	context_object_name='latest_question_list'
+
+	def get_queryset(self):
+		return Question.objects.order_by('pub_date')
+
 def addq(request):
 	if request.method == 'POST':
 		newq=request.POST.get('new_question')
@@ -27,13 +28,13 @@ def addq(request):
 	else:	
 		return render(request,'firstapp/addq.html')
 
-def detail(request,question_id):
-	question=get_object_or_404(Question,pk=question_id)
-	return render(request,'firstapp/detail.html',{'question':question})
+class DetailView(generic.DetailView):
+	model=Question
+	template_name='firstapp/detail.html'
 
-def results(request,question_id):
-	question = get_object_or_404(Question, pk=question_id)
-	return render(request, 'firstapp/results.html', {'question': question})
+class ResultsView(generic.DetailView):
+	model=Question
+	template_name='firstapp/results.html'
 
 
 def vote(request,question_id):
