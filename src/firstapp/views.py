@@ -23,7 +23,10 @@ def addq(request):
 		newq=request.POST.get('new_question')
 		q = Question(question_text=newq,pub_date=timezone.now())
 		q.save()
-
+		#newc=request.POST.get('new_choice')
+		#choice_question=question_id
+		#c=Choice(choice_text=newc,question=choice_question)
+		#c.save()
 		return render(request,'firstapp/addq.html')
 	else:	
 		return render(request,'firstapp/addq.html')
