@@ -27,6 +27,7 @@ def addq(request):
 		#choice_question=question_id
 		#c=Choice(choice_text=newc,question=choice_question)
 		#c.save()
+		#good
 		return render(request,'firstapp/addq.html')
 	else:	
 		return render(request,'firstapp/addq.html')
